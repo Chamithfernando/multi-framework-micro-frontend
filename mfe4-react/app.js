@@ -4,6 +4,7 @@ import { BrowserRouter, HashRouter, Link, Outlet, Route, RouterProvider, Routes,
 import Home from './pages/Home';
 import About from './pages/About';
 import Dashboard from './pages/Dashboard';
+import { createRoot } from 'react-dom/client';
 
 
 
@@ -81,8 +82,14 @@ class App extends React.Component {
 
 class Mfe4Element extends HTMLElement {
   connectedCallback() {
-    ReactDOM.render(<App />, this);
+    const root = createRoot(this);
+    root.render(<App/>);
   }
 }
 
 customElements.define('mfe4-element', Mfe4Element);
+
+
+
+
+
