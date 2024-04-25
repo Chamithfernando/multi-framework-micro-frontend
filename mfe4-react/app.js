@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Link, Outlet, Route, RouterProvider, Routes, createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Link, Outlet, Route, RouterProvider, Routes, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
+import Dashboard from './pages/Dashboard';
 
 
 
@@ -17,10 +18,10 @@ function Layout() {
             <Link to="/mfe4">Home</Link>
           </li>
           <li>
-            <Link to="/mfe4/about">About</Link>
+            <Link to="/dashboard/mfe4/about">About</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/dashboard/mfe4/dashboard">Dashboard</Link>
           </li>
           <li>
             <Link to="/nothing-here">Nothing Here</Link>
@@ -46,7 +47,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Basic Example</h1>
-  
+
         <p>
           This example demonstrates some of the core features of React Router
           including nested <code>&lt;Route&gt;</code>s,{" "}
@@ -54,24 +55,25 @@ class App extends React.Component {
           "*" route (aka "splat route") to render a "not found" page when someone
           visits an unrecognized URL.
         </p>
-  
+
         {/* Routes nest inside one another. Nested route paths build upon
               parent route paths, and nested route elements render inside
               parent route elements. See the note about <Outlet> below. */}
-              <BrowserRouter>
-        <Routes>
-          <Route path="/mfe4" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
+        <HashRouter >
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/dashboard/mfe4/about" element={<About />} />
+              <Route path="/dashboard/mfe4/dashboard" element={<Dashboard />} />
 
-  
-            {/* Using path="*"" means "match anything", so this route
+
+              {/* Using path="*"" means "match anything", so this route
                   acts like a catch-all for URLs that we don't have explicit
                   routes for. */}
-            <Route path="*" element={<Home />} />
-          </Route>
-        </Routes>
-        </BrowserRouter>
+              <Route path="*" element={<Home />} />
+            </Route>
+          </Routes>
+        </HashRouter>
       </div>
     );
   }
@@ -79,7 +81,7 @@ class App extends React.Component {
 
 class Mfe4Element extends HTMLElement {
   connectedCallback() {
-    ReactDOM.render(<App/>, this);
+    ReactDOM.render(<App />, this);
   }
 }
 
