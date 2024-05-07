@@ -6,6 +6,9 @@ import About from './pages/About';
 import Dashboard from './pages/Dashboard';
 import { createRoot } from 'react-dom/client';
 
+import './index.css'
+
+
 
 
 function Layout() {
@@ -16,7 +19,7 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to="/mfe4">Home</Link>
+            <Link className='head' to="/mfe4">Home</Link>
           </li>
           <li>
             <Link to="/dashboard/mfe4/about">About</Link>
