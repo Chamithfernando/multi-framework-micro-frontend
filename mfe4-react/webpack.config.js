@@ -6,7 +6,7 @@ module.exports = options => {
     entry: './index.js',
     output: {
       filename: 'bundle.js',
-      publicPath: "http://localhost:4204/",
+      publicPath: "http://localhost:8080/mfe/",
       uniqueName: "mfe4"
     },
     module: {
